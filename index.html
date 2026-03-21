@@ -6,41 +6,54 @@
     <title>IdeaSpace | Elegant Mobile Apps</title>
     <style>
         :root {
-            --bg-color: #121212;
-            --surface-color: #1e1e1e;
+            /* Fallback background color while image loads */
+            --bg-color-fallback: #121212; 
+            /* Semi-transparent grey so text is readable over the image */
+            --surface-color-overlay: rgba(30, 30, 30, 0.9); 
             --text-primary: #ffffff;
             --text-secondary: #aaaaaa;
-            --accent-color: #64b5f6;
+            --accent-color: #64b5f6; /* Modern Blue */
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
+
+            /* NEW: Background Image Setup */
+            background-image: url('bg.png'); /* File must be named exactly bg.png */
+            background-size: cover; /* Scale image to fill the screen */
+            background-position: center center; /* Center the image */
+            background-repeat: no-repeat; /* Do not tile the image */
+            background-attachment: fixed; /* Stays in place when scrolling */
+            background-color: var(--bg-color-fallback); /* Fallback */
         }
 
         header {
             text-align: center;
             padding: 4rem 2rem 2rem;
+            background-color: var(--surface-color-overlay); /* Ensures text readability */
+            border-bottom: 1px solid #333;
         }
 
-        /* This is where your uploaded logo will appear */
+        /* --- THE CRITICAL FIX FOR ICON CUTTING --- */
         .logo-img {
-            width: 120px;
-            height: 120px;
+            max-width: 180px; /* Max size, adjusts to fit smaller screens */
+            height: auto;     /* MUST be set to auto to maintain aspect ratio - FIXES CUTTING */
             border-radius: 24px;
-            object-fit: cover;
+            object-fit: contain; /* Ensures entire image is visible inside max width */
             margin-bottom: 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            display: inline-block;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0 0 0.5rem 0;
             letter-spacing: 1px;
+            font-weight: 300;
         }
 
         .subtitle {
@@ -48,57 +61,87 @@
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto 3rem;
+            font-weight: 300;
         }
 
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem 4rem;
+            padding: 0 2rem 5rem;
         }
 
         .app-card {
-            background-color: var(--surface-color);
+            background-color: var(--surface-color-overlay); /* Semi-transparent */
             border-radius: 16px;
             padding: 2rem;
-            transition: transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05); /* subtle glow edge */
         }
 
         .app-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+            border-color: rgba(100, 181, 246, 0.2); /* Highlight border on hover */
         }
 
         .app-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--accent-color);
             margin: 0 0 1rem 0;
+            font-weight: 400;
         }
 
         .app-desc {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .play-store-btn {
             display: inline-block;
             background-color: var(--accent-color);
             color: #000;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .play-store-btn:hover {
+            background-color: #90caf9; /* Lighter blue on hover */
+        }
+
+        .coming-soon-btn {
+            background-color: #333;
+            color: #888;
+            cursor: not-allowed;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             color: var(--text-secondary);
+            background-color: var(--surface-color-overlay);
             border-top: 1px solid #333;
             font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        a.ads-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a.ads-link:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -107,32 +150,32 @@
     <header>
         <img src="icon.png" alt="IdeaSpace Logo" class="logo-img" onerror="this.style.display='none'">
         <h1>IdeaSpace</h1>
-        <p class="subtitle">Building elegant, efficient, and beautifully designed mobile utilities and experiences.</p>
+        <p class="subtitle">Designing elegant, precise, and beautiful mobile utilities for modern life.</p>
     </header>
 
     <div class="app-grid">
         <div class="app-card">
             <h2 class="app-title">Nu: Simple Calculator</h2>
-            <p class="app-desc">A beautifully minimal multi-script calculator with a premium dark theme and smooth performance.</p>
+            <p class="app-desc">A beautifully minimal multi-script calculator with a premium dark theme and smooth, focused performance.</p>
             <a href="https://play.google.com/store/apps/details?id=com.dsamok.nusimplecalculator" target="_blank" class="play-store-btn">View on Google Play</a>
         </div>
 
         <div class="app-card">
             <h2 class="app-title">Flux</h2>
             <p class="app-desc">A powerful wealth projector and compound interest calculator designed for quick, precise financial math.</p>
-            <a href="#" class="play-store-btn">Coming Soon</a>
+            <a href="#" class="play-store-btn coming-soon-btn">Coming Soon</a>
         </div>
 
         <div class="app-card">
             <h2 class="app-title">Amber</h2>
             <p class="app-desc">A clean, focused Sudoku and logic puzzle experience for training your brain on the go.</p>
-            <a href="#" class="play-store-btn">Coming Soon</a>
+            <a href="#" class="play-store-btn coming-soon-btn">Coming Soon</a>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2026 IdeaSpace. All rights reserved.</p>
-        <p><a href="app-ads.txt" style="color: var(--accent-color); text-decoration: none;">Authorized App Ads</a></p>
+        <p><a href="app-ads.txt" class="ads-link">Authorized App Ads</a></p>
     </footer>
 
 </body>
