@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+    --bg-dark: #0a0a0a;
+    --surface-solid: #161616;
+    --surface-border: rgba(255, 255, 255, 0.05);
+    --accent-blue: #64b5f6;
+    --accent-blue-dim: rgba(100, 181, 246, 0.1);
+    --text-primary: #f8f9fa;
+    --text-secondary: #94a3b8;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Subtle background image or solid */
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(100, 181, 246, 0.05) 0%, transparent 60%),
+        url('bg.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- NAVIGATION (NO BORDER, NO LOGO) --- */
+nav {
+    position: sticky;
+    top: 0;
+    height: var(--nav-height);
+    background: transparent; /* Clean transparent navbar */
+    z-index: 1000;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- OPAQUE CONTAINER (GLOBAL) --- */
+.opaque-card {
+    background: var(--surface-solid);
+    border: 1px solid var(--surface-border);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* --- HERO --- */
+.hero {
+    padding: 2rem 5% 4rem;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.hero-icon {
+    width: 480px; /* 4x larger icon */
+    max-width: 90vw;
+    height: auto;
+    border-radius: 80px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+
+.hero .subtitle {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* --- APP GRID --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 5% 8rem;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+}
+
+.app-card {
+    background: var(--surface-solid);
+    border: 1px solid var(--surface-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    min-height: 240px;
+}
+
+.card-large { grid-column: span 12; }
+.card-medium { grid-column: span 6; }
+
+@media (max-width: 768px) {
+    .card-medium { grid-column: span 12; }
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    background: #1c1c1c;
+}
+
+.app-badge {
+    background: var(--accent-blue-dim);
+    color: var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.app-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.app-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: #000;
+}
+
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border: 1px solid var(--surface-border);
+    color: var(--text-secondary);
+}
+
+/* --- CONTACT --- */
+.contact-section {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.contact-email {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+/* --- FOOTER (NO SUPPORT LINK) --- */
+footer {
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: #ff5252;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.8;
+}
+
+.copyright {
+    color: rgba(255, 82, 82, 0.4);
+    font-size: 0.7rem;
+}
+
+/* --- UTILITIES --- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--text-primary);
+    transform: translateX(-4px);
+}
