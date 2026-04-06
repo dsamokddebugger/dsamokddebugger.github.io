@@ -37,4 +37,4 @@ We may update this policy periodically. Any changes will be posted here and are 
 If you have any questions or suggestions about our Privacy Policy, please reach out to us:
 
 **Email:** [apps@ideaspaceapps.store](mailto:apps@ideaspaceapps.store)
-**Website:** [ideaspaceapps.store/nu](https://ideaspaceapps.store/nu)
+**Website:** [ideaspaceapps.store](https://ideaspaceapps.store/nu)

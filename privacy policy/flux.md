@@ -1,39 +1,44 @@
 # Privacy Policy for Flux Wealth Projector
 
-**Effective Date:** April 4, 2026
+**Effective Date:** April 6, 2026
 
-At **Flux Wealth Projector**, we respect your financial privacy. Our goal is to provide a private environment for you to analyze and project your future wealth and savings.
+At **Flux**, we believe your financial future is your business alone. We provide a high-performance environment for wealth projection where your data never leaves your pocket.
 
-## 1. Information Collection and Calculation
-Flux is a local utility. We provide calculations for simple interest, compound interest, PPF (Public Provident Fund) projections, and inflation adjustments.
+## 1. Zero-Data Philosophy
+We do not collect, store, or sell your private information.
 
-### 1.1 Data Minimization
-We do **not** personally collect, store, or sell any of your private financial data. Flux does not require account creation, email addresses, or phone numbers for use.
+*   **No Accounts**: You do not need an email, phone number, or password to use Flux.
+*   **Local Processing**: Every calculation, savings rate, and financial projection is processed entirely on your device.
+*   **Generated Reports**: When you create a PDF report or a financial chart, it is saved locally to your device. We cannot see or access these documents.
 
-### 1.2 Local Calculations
-All financial inputs, savings rates, and projected values you enter are processed **exclusively on your device**. This information is not uploaded to our servers, nor is it shared with any third parties.
+## 2. In-App Purchases & Payments
+Flux offers optional premium features.
 
-## 2. Permissions
-Flux requires minimal device permissions to function correctly:
-*   **Network Access**: For framework requirements and internal app updates.
-*   **Vibration Control**: For tactile feedback during interactions.
+*   **Secure Billing**: All transactions are handled exclusively by Google Play Billing.
+*   **No Financial Access**: We never see or store your credit card numbers, bank details, or billing address. Google simply notifies us that your purchase was successful.
 
-We do **not** request access to sensitive information such as your camera, contacts, or GPS location.
+## 3. Device Permissions
+To provide a smooth experience, Flux requires the following:
 
-## 3. Third-Party Services
-For app maintenance and to support free development, we use certain third-party services which may collect anonymous diagnostic or advertising data:
-*   **Google Play Services**: For app security and distribution.
-*   **AdMob**: To display advertisements. AdMob may use device Advertising IDs for ad personalization.
-*   **Firebase Analytics**: To provide anonymous usage statistics (e.g., how many times a feature is used) so we can improve the app experience.
+*   **Storage & Printing**: To save your wealth reports as PDFs or send them to a printer.
+*   **Network Access**: To verify premium subscriptions and display ads.
+*   **Vibration Control**: To provide tactile feedback during interactions.
 
-## 4. Children’s Privacy
-Our services address a general audience and do not knowingly collect personal information from children under 13.
+## 4. Third-Party Services
+We use a small number of trusted partners to keep Flux running:
 
-## 5. Security
-The security of your data is paramount. Since we do not collect your personal or financial data, we cannot "lose" it. However, we encourage you to keep your mobile device secure and protected.
+*   **Google Play Services**: For secure app distribution and security.
+*   **AdMob**: To display advertisements (for free users). AdMob may use anonymous IDs to show relevant ads.
+*   **Firebase Analytics**: To see which features are most popular (e.g., "how many people use the PPF tool") so we can improve the app. This data is completely anonymous.
 
-## 6. Contact Us
+## 5. Data Security
+Since we do not collect your personal data, there is no central database for hackers to target. Your data is as secure as your phone itself. We recommend using your device’s built-in security (Passcode, FaceID, or Fingerprint) to protect your local projections.
+
+## 6. Children’s Privacy
+Flux is a financial tool for a general audience. We do not knowingly collect information from children under the age of 13.
+
+## 7. Contact Us
 If you have any questions or suggestions about our Privacy Policy, please contact our support team:
 
 **Email:** [apps@ideaspaceapps.store](mailto:apps@ideaspaceapps.store)
-**Website:** [ideaspaceapps.store/flux](https://ideaspaceapps.store/flux)
+**Website:** [ideaspaceapps.store](https://ideaspaceapps.store/flux)
