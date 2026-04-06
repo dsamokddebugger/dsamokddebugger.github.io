@@ -23,10 +23,8 @@ body {
     font-family: 'Outfit', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
-    /* Subtle background image or solid */
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(100, 181, 246, 0.05) 0%, transparent 60%),
-        url('bg.png');
+    /* Darkened background image with 80% opaque overlay */
+    background-image: url('assests/web/bg.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -77,11 +75,84 @@ nav {
 }
 
 .hero .subtitle {
-    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-size: clamp(1rem, 3vw, 1.25rem);
     font-weight: 300;
     color: var(--text-secondary);
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     margin: 0;
+}
+
+/* --- APP SELECTOR --- */
+.app-selector-section {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.try-apps-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.app-icon-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.app-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 80px;
+}
+
+.app-tab img, .app-tab .placeholder-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: var(--surface-solid);
+    border: 1px solid var(--surface-border);
+    padding: 10px;
+    transition: all 0.3s ease;
+    object-fit: contain;
+}
+
+.app-tab .placeholder-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.app-tab span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.app-tab:hover {
+    transform: translateY(-5px);
+}
+
+.app-tab:hover img, .app-tab:hover .placeholder-icon {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 20px rgba(100, 181, 246, 0.15);
+    background: #1c1c1c;
+}
+
+.app-tab:hover span {
+    color: var(--text-primary);
 }
 
 /* --- APP GRID --- */
@@ -188,6 +259,7 @@ nav {
 footer {
     padding: 3rem 5%;
     text-align: center;
+    color: #000;
 }
 
 .footer-links {
@@ -195,7 +267,7 @@ footer {
 }
 
 .footer-links a {
-    color: #ff5252;
+    color: #000;
     text-decoration: none;
     font-size: 0.85rem;
     transition: opacity 0.2s ease;
@@ -206,7 +278,7 @@ footer {
 }
 
 .copyright {
-    color: rgba(255, 82, 82, 0.4);
+    color: #000;
     font-size: 0.7rem;
 }
 
@@ -224,4 +296,78 @@ footer {
 .back-link:hover {
     color: var(--text-primary);
     transform: translateX(-4px);
+}
+
+/* --- APP PAGES STYLES --- */
+.app-page-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.app-page-content {
+    flex: 1;
+}
+
+.play-badge {
+    height: 60px;
+    transition: transform 0.2s ease;
+    margin-top: 2rem;
+}
+
+.play-badge:hover {
+    transform: scale(1.05);
+}
+
+.coming-soon-badge {
+    background: var(--surface-solid);
+    border: 1px solid var(--surface-border);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+}
+
+/* --- SITE FOOTER --- */
+.site-footer {
+    padding: 4rem 5% 2rem;
+    text-align: center;
+    border-top: 1px solid var(--surface-border);
+    margin-top: 4rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    color: #000;
+}
+
+.site-footer .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.site-footer a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: var(--accent-blue);
+}
+
+.site-footer .copyright {
+    color: #000;
+    font-size: 0.8rem;
 }
