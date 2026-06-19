@@ -1,70 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IdeaSpace | Building the Future</title>
-    <link rel="icon" type="image/png" href="assests/web/favicon.png">
-    <link rel="stylesheet" href="index.css">
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ideaspace">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>ideaspace</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-    <nav>
-        <!-- No Text Branding -->
-    </nav>
-
-    <header class="hero">
-        <img src="assests/web/icon.png" alt="Icon" class="hero-icon" onerror="this.style.display='none'">
-        <div class="opaque-card">
-            <p class="subtitle">Building the Future of Utility Apps</p>
-            
-            <div class="app-selector-section">
-                <p class="try-apps-subtitle">Try our latest apps</p>
-                <div class="app-icon-tabs">
-                    <a href="nu.html" class="app-tab">
-                        <img src="assests/nu/nu.PNG" alt="Nu Calculator">
-                        <span>Nu</span>
-                    </a>
-                    <a href="flux.html" class="app-tab">
-                        <img src="assests/flux/flux.jpg" alt="Flux">
-                        <span>Flux</span>
-                    </a>
-                    <a href="amber.html" class="app-tab">
-                        <div class="placeholder-icon">A</div>
-                        <span>Amber</span>
-                    </a>
-                    <a href="omni.html" class="app-tab">
-                        <div class="placeholder-icon">O</div>
-                        <span>Omni</span>
-                    </a>
-                    <a href="kingslayer.html" class="app-tab">
-                        <div class="placeholder-icon">K</div>
-                        <span>Kingslayer</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <div class="app-grid">
-            <!-- App cards removed as requested -->
-        </div>
-    </main>
-
-
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="privacy.html">Privacy Policy</a>
-            </div>
-            <p class="copyright">&copy; 2026 IdeaSpace. All rights reserved.</p>
-        </div>
-    </footer>
-
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
-
-
-

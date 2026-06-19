@@ -2,7 +2,7 @@
 
 **Last Updated:** April 6, 2026
 
-At **IdeaSpace**, we are committed to providing powerful utility tools while ensuring your digital privacy is respected and protected. This Privacy Policy applies to all mobile applications developed by IdeaSpace, including but not limited to **Nu, Flux, Amber, Omni, and Kingslayer**.
+At **IdeaSpace**, we are committed to providing powerful utility tools while ensuring your digital privacy is respected and protected. This Privacy Policy applies to all mobile applications developed by IdeaSpace, including but not limited to **Nu, Flux, Amber, Omni, and Chess Academy**.
 
 By using our applications, you agree to the collection and use of information in accordance with this policy.
 

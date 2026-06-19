@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | AMBER Sudoku - IdeaSpace</title>
+    <link rel="icon" type="image/png" href="assests/web/favicon.png">
+    <link rel="stylesheet" href="privacy.css">
+</head>
+<body>
+
+    <div class="privacy-wrapper">
+        <nav>
+            <a href="amber.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Amber
+            </a>
+        </nav>
+
+        <main class="privacy-container">
+            <h1>Privacy Policy Report: AMBER Sudoku</h1>
+            <p class="last-updated">Last Updated: June 19, 2026</p>
+
+            <p>This report outlines the privacy-related aspects of the AMBER Sudoku application. It is intended to assist in the creation of a formal Privacy Policy for app store submissions (Google Play Store, Apple App Store).</p>
+
+            <h2>1. Overview</h2>
+            <p>AMBER Sudoku is a mobile application developed using Flutter. It is a puzzle game that operates primarily offline, with minimal network engagement for non-core features (ads and fonts).</p>
+
+            <h2>2. Data Collection</h2>
+            
+            <h3>2.1 Personal Data</h3>
+            <p>The app does not collect any personally identifiable information (PII) directly from the user.</p>
+            <ul>
+                <li>No user accounts or registrations are required.</li>
+                <li>No names, email addresses, phone numbers, or physical addresses are requested or stored.</li>
+            </ul>
+
+            <h3>2.2 Automatically Collected Data</h3>
+            <p>The app uses third-party services that may collect data automatically:</p>
+            
+            <table style="width:100%; border-collapse: collapse; margin-bottom: 1.5rem; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--border-color);">
+                        <th style="padding: 10px; font-weight: 600; color: var(--text-main);">Service</th>
+                        <th style="padding: 10px; font-weight: 600; color: var(--text-main);">Purpose</th>
+                        <th style="padding: 10px; font-weight: 600; color: var(--text-main);">Data Collected (Approximate)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 10px; color: var(--text-muted); font-weight: 600;">Google Mobile Ads (AdMob)</td>
+                        <td style="padding: 10px; color: var(--text-muted);">Monetization</td>
+                        <td style="padding: 10px; color: var(--text-muted);">Advertising ID (AAID/IDFA), device info, coarse location, usage data.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 10px; color: var(--text-muted); font-weight: 600;">Google Fonts</td>
+                        <td style="padding: 10px; color: var(--text-muted);">Typography</td>
+                        <td style="padding: 10px; color: var(--text-muted);">IP address (for font delivery).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Data Storage (Local)</h2>
+            <p>The app stores data locally on the user's device using SharedPreferences. This data is not transmitted to any external servers by the app.</p>
+            <ul>
+                <li><strong>Game Progress</strong>: Current grid state, solution, move history, and timer.</li>
+                <li><strong>User Profiles</strong>: In-game nicknames (e.g., "Leo", "Maya"), levels, XP, and stats.</li>
+                <li><strong>Settings</strong>: Theme preferences, sound settings, and ad-free status.</li>
+            </ul>
+
+            <h2>4. Permissions</h2>
+            <p>The app requests the following permissions:</p>
+            <ul>
+                <li><strong>Internet Access (android.permission.INTERNET)</strong>: Required to load advertisements and fetch Google Fonts.</li>
+            </ul>
+
+            <h2>5. Third-Party Services</h2>
+            <p>The following third-party libraries are integrated:</p>
+            <ul>
+                <li><strong>Google Mobile Ads SDK</strong>: Used to display banner and interstitial ads.</li>
+                <li><strong>Google Fonts</strong>: Used for custom typography.</li>
+            </ul>
+
+            <h2>6. Recommendations for Formal Privacy Policy</h2>
+            <p>When drafting your formal privacy policy, ensure you:</p>
+            <ul>
+                <li><strong>Link to Third-Party Policies</strong>: Include links to the privacy policies of Google Play Services and AdMob.</li>
+                <li><strong>Disclosure of Local Storage</strong>: State that the app stores game data locally on the device.</li>
+                <li><strong>Target Audience</strong>: If the app is targeted at children, ensure compliance with COPPA (US) or GDPR-K (EU). Sudoku is generally considered for all ages, but the "Leo/Maya" characters might appeal to children.</li>
+                <li><strong>Opt-Out</strong>: Mention that users can reset their Advertising ID in their device settings to limit personalized ads.</li>
+            </ul>
+        </main>
+    </div>
+
+    <footer class="site-footer" style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+        <p>&copy; 2026 IdeaSpace. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
