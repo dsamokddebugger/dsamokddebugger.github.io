@@ -64729,12 +64729,13 @@ f.push(A.bv(r.b,A.bx().$3$color$fontSize$fontWeight(B.h,j?32:44,B.al),B.aQ))
 f.push(B.vC)
 r=l.a.c
 f.push(A.bv(r.d,A.bx().$4$color$fontSize$fontWeight$letterSpacing(B.V,j?14:18,B.P,1),B.aQ))
-l.a.toString
-r=A.cW(32)
+if(l.a.c.Q!=null){r=A.cW(32)
 q=A.f6(B.h.bc(0.08))
 p=A.c([new A.dD(0,B.be,B.k.bc(0.4),B.i9,40)],s)
-B.b.I(f,A.c([B.bp,A.cD(k,A.rz(A.cW(32),A.tL(l.a.c.Q,k,B.bv,k,1/0)),B.p,k,k,new A.c8(k,k,q,r,p,k,B.U),k,k,k,k,k,k,k)],g))
-f=A.c([A.d9(f,B.a7,B.H,B.M),B.JD],g)
+o=A.cW(32)
+n=l.a.c.Q
+n.toString
+B.b.I(f,A.c([B.bp,A.cD(k,A.rz(o,A.tL(n,k,B.bv,k,1/0)),B.p,k,k,new A.c8(k,k,q,r,p,k,B.U),k,k,k,k,k,k,k)],g))}f=A.c([A.d9(f,B.a7,B.H,B.M),B.JD],g)
 l.a.toString
 r=j?24:48
 q=B.k.bc(0.7)
@@ -68093,7 +68094,7 @@ B.e6=new A.A(1,0.5647058823529412,0.792156862745098,0.9764705882352941,B.f)
 B.k4=new A.A(1,0.25882352941176473,0.6470588235294118,0.9607843137254902,B.f)
 B.Dc=s([B.e6,B.k4],t.t_)
 B.BR=new A.iy(B.dH,B.dG,B.bW,B.Dc,null,null)
-B.wF=new A.ez("chess-academy","Chess Academy","Dominate the Board","Engaging & Synchronized Chess Learning","assets/chess-academy/logo.png","C",B.yu,"https://play.google.com/store/apps/details?id=com.dsamok.ideaspacechess","chess-academy-privacy.html","chess-academy-deletion.html","assets/chess-academy/feature_graphic.png","Master Chess with Analytics","IdeaSpace Chess Academy provides a secure, synchronized, and engaging chess-learning experience. Improve your tactical vision, track your cognitive progress on a dynamic dashboard, and test your skills against the powerful Stockfish engine.",null,B.Db,B.C1,B.hH,B.hI,B.kY,B.e6,B.BR)
+B.wF=new A.ez("chess-academy","Chess Academy","Dominate the Board","Engaging & Synchronized Chess Learning","assets/chess-academy/logo.png","C",B.yu,"https://play.google.com/store/apps/details?id=com.dsamok.ideaspacechess","chess-academy-privacy.html","chess-academy-deletion.html",null,"Master Chess with Analytics","IdeaSpace Chess Academy provides a secure, synchronized, and engaging chess-learning experience. Improve your tactical vision, track your cognitive progress on a dynamic dashboard, and test your skills against the powerful Stockfish engine.",null,B.Db,B.C1,B.hH,B.hI,B.kY,B.e6,B.BR)
 B.Af=new A.cI("20+ Numeral Systems","Choose from Devanagari, Arabic, Bengali, Tamil, Telugu, Thai, Chinese (Han), and many more. No more mental translation; just pure math in your script.")
 B.At=new A.cI("Instant Switch",'Long-press the "Nu" logo/header to open the Script Selection page and transform your calculating experience instantly.')
 B.Al=new A.cI("Smart Precision","Handles massive numbers and long decimals with ease, automatically switching to scientific notation when needed for absolute accuracy.")
@@ -68131,7 +68132,7 @@ B.DI=s(["assets/amber/sc0.png","assets/amber/sc1.png","assets/amber/sc2.png","as
 B.z_=new A.A(1,1,0.5607843137254902,0,B.f)
 B.BZ=s([B.fQ,B.z_],t.t_)
 B.BT=new A.iy(B.dH,B.dG,B.bW,B.BZ,null,null)
-B.wH=new A.ez("amber","Amber","Clean, Focused Sudoku","Clean, Focused Sudoku Puzzles","assets/amber/logo.png","A",B.fQ,"https://play.google.com/store/apps/details?id=com.dsamok.ambersudoku","amber-privacy.html",null,"assets/amber/feature_graphic.png","Why settle for cluttered puzzles?","AMBER Sudoku is designed to bring you the purest Sudoku experience without distractions. Featuring beautiful typography, local stats tracking, and a distraction-free interface, it's the perfect companion for your daily brain exercise.",null,B.CP,B.DI,B.hH,B.hI,B.kY,B.fQ,B.BT)
+B.wH=new A.ez("amber","Amber","Clean, Focused Sudoku","Clean, Focused Sudoku Puzzles","assets/amber/logo.png","A",B.fQ,"https://play.google.com/store/apps/details?id=com.dsamok.ambersudoku","amber-privacy.html",null,null,"Why settle for cluttered puzzles?","AMBER Sudoku is designed to bring you the purest Sudoku experience without distractions. Featuring beautiful typography, local stats tracking, and a distraction-free interface, it's the perfect companion for your daily brain exercise.",null,B.CP,B.DI,B.hH,B.hI,B.kY,B.fQ,B.BT)
 B.fn=new A.r2(0,"polite")
 B.fo=new A.r2(1,"assertive")
 B.cA=new A.ns("assets/web/bg.png",null,null)

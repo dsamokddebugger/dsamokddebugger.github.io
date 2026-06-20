@@ -194,7 +194,6 @@ final List<AppModel> appsList = [
     isComingSoon: false,
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.dsamok.ambersudoku',
     privacyUrl: 'amber-privacy.html',
-    heroImage: 'assets/amber/feature_graphic.png',
     problemTitle: 'Why settle for cluttered puzzles?',
     problemContent: 'AMBER Sudoku is designed to bring you the purest Sudoku experience without distractions. Featuring beautiful typography, local stats tracking, and a distraction-free interface, it\'s the perfect companion for your daily brain exercise.',
     features: [
@@ -244,7 +243,6 @@ final List<AppModel> appsList = [
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.dsamok.ideaspacechess',
     privacyUrl: 'chess-academy-privacy.html',
     deletionUrl: 'chess-academy-deletion.html',
-    heroImage: 'assets/chess-academy/feature_graphic.png',
     problemTitle: 'Master Chess with Analytics',
     problemContent: 'IdeaSpace Chess Academy provides a secure, synchronized, and engaging chess-learning experience. Improve your tactical vision, track your cognitive progress on a dynamic dashboard, and test your skills against the powerful Stockfish engine.',
     features: [
