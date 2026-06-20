@@ -1,11 +1,11 @@
 {
-    "name": "ideaspace",
-    "short_name": "ideaspace",
+    "name": "IdeaSpace",
+    "short_name": "IdeaSpace",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0a0a0a",
+    "theme_color": "#64b5f6",
+    "description": "IdeaSpace - Building the Future of Utility Apps",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

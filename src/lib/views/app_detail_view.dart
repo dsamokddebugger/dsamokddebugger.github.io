@@ -765,9 +765,9 @@ class _AppDetailViewState extends State<AppDetailView> {
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () => _launchUrl(widget.app.playStoreUrl!),
-              child: Image.network(
-                'https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg',
-                height: 70,
+              child: Image.asset(
+                'assets/web/google_play_badge.png',
+                height: 60,
                 errorBuilder: (context, error, stackTrace) => Container(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   decoration: BoxDecoration(
