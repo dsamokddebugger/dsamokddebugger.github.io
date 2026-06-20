@@ -269,6 +269,18 @@ final List<AppModel> appsList = [
       'assets/chess-academy/sc2.png',
       'assets/chess-academy/sc3.png',
     ],
+    subPageLinks: [
+      SubPageLink(
+        title: 'Interactive Showcase',
+        url: 'chess-academy/index.html',
+        icon: Icons.auto_awesome_rounded,
+      ),
+      SubPageLink(
+        title: 'Operating Manual',
+        url: 'chess-academy/manual.html',
+        icon: Icons.menu_book_rounded,
+      ),
+    ],
     accentColor: Color(0xff90caf9),
     accentGradient: LinearGradient(
       colors: [Color(0xff90caf9), Color(0xff42a5f5)],

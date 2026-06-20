@@ -28,6 +28,18 @@ class GuidelineItem {
   const GuidelineItem({required this.title, required this.description});
 }
 
+class SubPageLink {
+  final String title;
+  final String url;
+  final IconData icon;
+
+  const SubPageLink({
+    required this.title,
+    required this.url,
+    required this.icon,
+  });
+}
+
 class AppModel {
   final String id;
   final String name;
@@ -51,6 +63,7 @@ class AppModel {
   final List<ThemePillItem> themePills;
   final List<GlossaryItem> glossary;
   final List<GuidelineItem> guidelines;
+  final List<SubPageLink> subPageLinks;
  
   final Color accentColor;
   final LinearGradient accentGradient;
@@ -76,6 +89,7 @@ class AppModel {
     this.themePills = const [],
     this.glossary = const [],
     this.guidelines = const [],
+    this.subPageLinks = const [],
     this.accentColor = const Color(0xff64b5f6),
     this.accentGradient = const LinearGradient(
       colors: [Color(0xff64b5f6), Color(0xff1e88e5)],

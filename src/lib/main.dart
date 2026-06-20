@@ -6,6 +6,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'models/apps_data.dart';
 import 'views/home_view.dart';
 import 'views/app_detail_view.dart';
+import 'views/privacy_view.dart';
+import 'views/chess_academy_overview_view.dart';
+import 'views/chess_academy_manual_view.dart';
 
 void main() {
   // Use path URL strategy (removes the '#' from the URL path)
@@ -29,13 +32,13 @@ class MyApp extends StatelessWidget {
         },
       ),
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: const Color(0xff64b5f6),
-        scaffoldBackgroundColor: const Color(0xff0a0a0a),
-        textTheme: GoogleFonts.outfitTextTheme(ThemeData.dark().textTheme),
-        colorScheme: const ColorScheme.dark(
-          primary: Color(0xff64b5f6),
-          surface: Color(0xff0a0a0a),
+        brightness: Brightness.light,
+        primaryColor: const Color(0xff6366f1), // Indigo
+        scaffoldBackgroundColor: const Color(0xfff8fafc), // Slate-50
+        textTheme: GoogleFonts.outfitTextTheme(ThemeData.light().textTheme),
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xff6366f1),
+          surface: Color(0xfff8fafc),
         ),
       ),
       // Define routing based on window.location.pathname
@@ -47,6 +50,35 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             settings: settings,
             builder: (context) => HomeView(
+              onNavigate: (route) => _handleNavigation(context, route),
+            ),
+          );
+        }
+
+        // Match privacy policy route
+        if (path == '/privacy' || path == '/privacy.html') {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => PrivacyView(
+              onNavigate: (route) => _handleNavigation(context, route),
+            ),
+          );
+        }
+
+        // Match Chess Academy specific routes
+        if (path == '/chess-academy/index.html' || path == '/chess-academy') {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => ChessAcademyOverviewView(
+              onNavigate: (route) => _handleNavigation(context, route),
+            ),
+          );
+        }
+
+        if (path == '/chess-academy/manual.html' || path == '/chess-academy/manual') {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (context) => ChessAcademyManualView(
               onNavigate: (route) => _handleNavigation(context, route),
             ),
           );
@@ -94,8 +126,7 @@ class MyApp extends StatelessWidget {
   // Shared navigation logic
   void _handleNavigation(BuildContext context, String route) {
     if (route.endsWith('-privacy.html') || 
-        route.endsWith('-deletion.html') || 
-        route == '/privacy.html') {
+        route.endsWith('-deletion.html')) {
       // If it is a static HTML page (privacy or deletion policy), load it directly in the browser
       final cleanRoute = route.startsWith('/') ? route.substring(1) : route;
       launchUrl(

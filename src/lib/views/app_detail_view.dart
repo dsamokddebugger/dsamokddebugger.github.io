@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/app_model.dart';
+import '../widgets/programmatic_background.dart';
+import '../widgets/nav_bar.dart';
 
 class AppDetailView extends StatefulWidget {
   final AppModel app;
@@ -20,10 +22,20 @@ class AppDetailView extends StatefulWidget {
 class _AppDetailViewState extends State<AppDetailView> {
   final ScrollController _screenshotController = ScrollController();
 
-  Future<void> _launchUrl(String urlString) async {
+  Future<void> _launchUrl(String urlString, {bool sameTab = false}) async {
     final Uri url = Uri.parse(urlString);
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw Exception('Could not launch $url');
+    if (sameTab) {
+      if (!await launchUrl(
+        url,
+        mode: LaunchMode.platformDefault,
+        webOnlyWindowName: '_self',
+      )) {
+        throw Exception('Could not launch $url');
+      }
+    } else {
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw Exception('Could not launch $url');
+      }
     }
   }
 
@@ -39,25 +51,16 @@ class _AppDetailViewState extends State<AppDetailView> {
     final isMobile = size.width < 768;
 
     return Scaffold(
-      backgroundColor: const Color(0xff0a0a0a),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/web/bg.png'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Color.fromARGB(230, 10, 10, 10), // slightly darker overlay for reading text
-              BlendMode.srcOver,
-            ),
-          ),
-        ),
+      backgroundColor: const Color(0xfff8fafc),
+      body: ProgrammaticBackground(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // Navbar with Back Button
-              _buildNavbar(isMobile),
+              // Unified Floating Navbar
+              NavBar(
+                onNavigate: widget.onNavigate,
+                currentRoute: '/${widget.app.id}.html',
+              ),
 
               // Main Article Container
               Padding(
@@ -79,6 +82,12 @@ class _AppDetailViewState extends State<AppDetailView> {
                         // Problem / About Section
                         if (widget.app.problemTitle != null && widget.app.problemContent != null)
                           _buildProblemSection(isMobile),
+
+                        // Subpage Resources Section (e.g. Chess Academy Showcase/Manual)
+                        if (widget.app.subPageLinks.isNotEmpty) ...[
+                          const SizedBox(height: 48),
+                          _buildSubPageLinks(isMobile),
+                        ],
 
                         // Coming soon badge if applicable
                         if (widget.app.isComingSoon) ...[
@@ -140,38 +149,7 @@ class _AppDetailViewState extends State<AppDetailView> {
     );
   }
 
-  Widget _buildNavbar(bool isMobile) {
-    return Container(
-      height: 80,
-      padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 40),
-      alignment: Alignment.centerLeft,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () => widget.onNavigate('/'),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 20,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                'Back to Home',
-                style: GoogleFonts.outfit(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+
 
   Widget _buildHeroHeader(bool isMobile) {
     return Column(
@@ -203,9 +181,9 @@ class _AppDetailViewState extends State<AppDetailView> {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-              color: const Color(0xff161616),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+              border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
             ),
             alignment: Alignment.center,
             child: Text(
@@ -227,7 +205,7 @@ class _AppDetailViewState extends State<AppDetailView> {
           style: GoogleFonts.outfit(
             fontSize: isMobile ? 32 : 44,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: const Color(0xff0f172a),
           ),
         ),
 
@@ -240,7 +218,7 @@ class _AppDetailViewState extends State<AppDetailView> {
           style: GoogleFonts.outfit(
             fontSize: isMobile ? 14 : 18,
             fontWeight: FontWeight.w500,
-            color: const Color(0xff94a3b8),
+            color: const Color(0xff475569),
             letterSpacing: 1,
           ),
         ),
@@ -251,12 +229,12 @@ class _AppDetailViewState extends State<AppDetailView> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),
-              border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+              border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.4),
-                  blurRadius: 40,
-                  offset: const Offset(0, 20),
+                  color: Colors.black.withValues(alpha: 0.05),
+                  blurRadius: 30,
+                  offset: const Offset(0, 10),
                 ),
               ],
             ),
@@ -278,14 +256,14 @@ class _AppDetailViewState extends State<AppDetailView> {
     return Container(
       padding: EdgeInsets.all(isMobile ? 24 : 48),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.7),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.4),
-            blurRadius: 40,
-            offset: const Offset(0, 20),
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
           ),
         ],
       ),
@@ -297,7 +275,7 @@ class _AppDetailViewState extends State<AppDetailView> {
             style: GoogleFonts.outfit(
               fontSize: isMobile ? 22 : 28,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: const Color(0xff0f172a),
             ),
           ),
           const SizedBox(height: 20),
@@ -305,7 +283,7 @@ class _AppDetailViewState extends State<AppDetailView> {
             widget.app.problemContent!,
             style: GoogleFonts.outfit(
               fontSize: 16,
-              color: const Color(0xff94a3b8),
+              color: const Color(0xff475569),
               height: 1.8,
             ),
           ),
@@ -315,11 +293,111 @@ class _AppDetailViewState extends State<AppDetailView> {
               widget.app.problemContent2!,
               style: GoogleFonts.outfit(
                 fontSize: 16,
-                color: const Color(0xff94a3b8),
+                color: const Color(0xff475569),
                 height: 1.8,
               ),
             ),
           ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSubPageLinks(bool isMobile) {
+    return Container(
+      padding: EdgeInsets.all(isMobile ? 24 : 48),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.85),
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Explore ${widget.app.name} Resources',
+            style: GoogleFonts.outfit(
+              fontSize: isMobile ? 22 : 28,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xff0f172a),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Access interactive web previews, operating instructions, and simulation dashboards compiled specifically for the web.',
+            style: GoogleFonts.outfit(
+              fontSize: 15,
+              color: const Color(0xff475569),
+              height: 1.6,
+            ),
+          ),
+          const SizedBox(height: 28),
+          Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            children: widget.app.subPageLinks.map((link) {
+              return MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () {
+                    final route = link.url.startsWith('/') ? link.url : '/${link.url}';
+                    widget.onNavigate(route);
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: widget.app.accentColor.withValues(alpha: 0.05),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: widget.app.accentColor.withValues(alpha: 0.2),
+                        width: 1,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: widget.app.accentColor.withValues(alpha: 0.02),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          link.icon,
+                          color: widget.app.accentColor,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          link.title,
+                          style: GoogleFonts.outfit(
+                            color: const Color(0xff0f172a),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                          color: const Color(0xff475569),
+                          size: 16,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
@@ -330,9 +408,9 @@ class _AppDetailViewState extends State<AppDetailView> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.05),
+          color: Colors.black.withValues(alpha: 0.03),
           borderRadius: BorderRadius.circular(100),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+          border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
         ),
         child: Text(
           'COMING SOON',
@@ -357,7 +435,7 @@ class _AppDetailViewState extends State<AppDetailView> {
           style: GoogleFonts.outfit(
             fontSize: isMobile ? 24 : 32,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: const Color(0xff0f172a),
           ),
         ),
         const SizedBox(height: 32),
@@ -379,10 +457,10 @@ class _AppDetailViewState extends State<AppDetailView> {
                       width: 180,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+                        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.3),
+                            color: Colors.black.withValues(alpha: 0.08),
                             blurRadius: 15,
                             offset: const Offset(0, 5),
                           ),
@@ -448,12 +526,12 @@ class _AppDetailViewState extends State<AppDetailView> {
       width: 44,
       height: 44,
       decoration: BoxDecoration(
-        color: const Color(0xff1e1e1e).withValues(alpha: 0.8),
+        color: Colors.white.withValues(alpha: 0.9),
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.4),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -464,10 +542,10 @@ class _AppDetailViewState extends State<AppDetailView> {
         child: InkWell(
           borderRadius: BorderRadius.circular(22),
           onTap: onPressed,
-          hoverColor: Colors.white.withValues(alpha: 0.08),
+          hoverColor: Colors.black.withValues(alpha: 0.04),
           child: Icon(
             icon,
-            color: Colors.white,
+            color: const Color(0xff0f172a),
             size: 28,
           ),
         ),
@@ -479,9 +557,16 @@ class _AppDetailViewState extends State<AppDetailView> {
     return Container(
       padding: EdgeInsets.all(isMobile ? 24 : 48),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.7),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -507,7 +592,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                 : 'Experience wealth management with absolute precision and premium design.',
             style: GoogleFonts.outfit(
               fontSize: 15,
-              color: const Color(0xff94a3b8),
+              color: const Color(0xff475569),
               height: 1.6,
             ),
           ),
@@ -534,8 +619,8 @@ class _AppDetailViewState extends State<AppDetailView> {
                   return Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.01),
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.05)),
+                      color: Colors.black.withValues(alpha: 0.02),
+                      border: Border.all(color: Colors.black.withValues(alpha: 0.05)),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Column(
@@ -547,7 +632,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                           style: GoogleFonts.outfit(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            color: const Color(0xff0f172a),
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -556,7 +641,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                             feature.description,
                             style: GoogleFonts.outfit(
                               fontSize: 13,
-                              color: const Color(0xff94a3b8),
+                              color: const Color(0xff475569),
                               height: 1.5,
                             ),
                           ),
@@ -577,9 +662,16 @@ class _AppDetailViewState extends State<AppDetailView> {
     return Container(
       padding: EdgeInsets.all(isMobile ? 24 : 48),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.7),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -602,7 +694,7 @@ class _AppDetailViewState extends State<AppDetailView> {
             'Match your calculator to your mood or device aesthetic with 6 handcrafted themes designed for focus and clarity.',
             style: GoogleFonts.outfit(
               fontSize: 15,
-              color: const Color(0xff94a3b8),
+              color: const Color(0xff475569),
               height: 1.6,
             ),
           ),
@@ -617,9 +709,9 @@ class _AppDetailViewState extends State<AppDetailView> {
               return Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.05),
+                  color: theme.color.withValues(alpha: 0.06),
                   borderRadius: BorderRadius.circular(100),
-                  border: Border.all(color: theme.color.withValues(alpha: 0.7)),
+                  border: Border.all(color: theme.color.withValues(alpha: 0.3)),
                 ),
                 child: Text(
                   theme.label,
@@ -640,7 +732,7 @@ class _AppDetailViewState extends State<AppDetailView> {
             style: GoogleFonts.outfit(
               fontStyle: FontStyle.italic,
               fontSize: 14,
-              color: widget.app.accentColor.withValues(alpha: 0.9),
+              color: widget.app.accentColor.withValues(alpha: 0.8),
             ),
           ),
         ],
@@ -652,9 +744,16 @@ class _AppDetailViewState extends State<AppDetailView> {
     return Container(
       padding: EdgeInsets.all(isMobile ? 24 : 48),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.7),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -700,7 +799,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                         style: GoogleFonts.outfit(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                          color: const Color(0xff0f172a),
                         ),
                       ),
                       const SizedBox(height: 6),
@@ -708,7 +807,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                         item.definition,
                         style: GoogleFonts.outfit(
                           fontSize: 13,
-                          color: const Color(0xff94a3b8),
+                          color: const Color(0xff475569),
                           height: 1.4,
                         ),
                       ),
@@ -727,9 +826,16 @@ class _AppDetailViewState extends State<AppDetailView> {
     return Container(
       padding: EdgeInsets.all(isMobile ? 24 : 48),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.7),
+        color: Colors.white.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(32),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -741,7 +847,7 @@ class _AppDetailViewState extends State<AppDetailView> {
             style: GoogleFonts.outfit(
               fontSize: isMobile ? 24 : 30,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: const Color(0xff0f172a),
             ),
           ),
           const SizedBox(height: 12),
@@ -750,7 +856,7 @@ class _AppDetailViewState extends State<AppDetailView> {
               'Using FLUX is intuitive. Follow this simple flow to map out your financial journey:',
               style: GoogleFonts.outfit(
                 fontSize: 15,
-                color: const Color(0xff94a3b8),
+                color: const Color(0xff475569),
               ),
             ),
             const SizedBox(height: 32),
@@ -780,7 +886,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                       child: Text(
                         '${index + 1}',
                         style: GoogleFonts.outfit(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
                         ),
@@ -797,7 +903,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                             style: GoogleFonts.outfit(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                              color: const Color(0xff0f172a),
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -805,7 +911,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                             item.description,
                             style: GoogleFonts.outfit(
                               fontSize: 13,
-                              color: const Color(0xff94a3b8),
+                              color: const Color(0xff475569),
                               height: 1.5,
                             ),
                           ),
@@ -830,7 +936,7 @@ class _AppDetailViewState extends State<AppDetailView> {
           style: GoogleFonts.outfit(
             fontSize: isMobile ? 24 : 32,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: const Color(0xff0f172a),
           ),
         ),
         const SizedBox(height: 24),
@@ -847,7 +953,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+                    border: Border.all(color: Colors.black.withValues(alpha: 0.2)),
                   ),
                   child: Text(
                     'Get it on Google Play',
@@ -867,7 +973,7 @@ class _AppDetailViewState extends State<AppDetailView> {
   Widget _buildFooter() {
     return Container(
       width: double.infinity,
-      color: Colors.black.withValues(alpha: 0.3),
+      color: Colors.black.withValues(alpha: 0.02),
       padding: const EdgeInsets.symmetric(vertical: 40),
       child: Column(
         children: [
@@ -881,7 +987,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                   child: Text(
                     'Home',
                     style: GoogleFonts.outfit(
-                      color: const Color(0xff94a3b8),
+                      color: const Color(0xff475569),
                       fontSize: 14,
                     ),
                   ),
@@ -895,7 +1001,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                   child: Text(
                     'Privacy Policy',
                     style: GoogleFonts.outfit(
-                      color: const Color(0xff94a3b8),
+                      color: const Color(0xff475569),
                       fontSize: 14,
                     ),
                   ),
@@ -910,7 +1016,7 @@ class _AppDetailViewState extends State<AppDetailView> {
                     child: Text(
                       'Data Deletion',
                       style: GoogleFonts.outfit(
-                        color: const Color(0xff94a3b8),
+                        color: const Color(0xff475569),
                         fontSize: 14,
                       ),
                     ),
@@ -923,7 +1029,7 @@ class _AppDetailViewState extends State<AppDetailView> {
           Text(
             '© 2026 IdeaSpace. All rights reserved.',
             style: GoogleFonts.outfit(
-              color: const Color(0xff94a3b8).withValues(alpha: 0.5),
+              color: const Color(0xff475569).withValues(alpha: 0.6),
               fontSize: 12,
             ),
           ),

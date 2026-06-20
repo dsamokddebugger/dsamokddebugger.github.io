@@ -1,323 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="IdeaSpace Chess Academy - Comprehensive Technical Specs, Lore Manual, Adaptive Engine Formulas, and Scotoma Diagnostic Diagnostics.">
-  <title>Chess Academy | Technical Specs & Operating Manual</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" type="image/png" href="../favicon.png">
-  <!-- KaTeX for high-performance math rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="IdeaSpace - Building the Future of Utility Apps">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="IdeaSpace">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>IdeaSpace | Building the Future</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
 
-  <!-- Navigation Header -->
-  <header>
-    <div class="container nav-container">
-      <div class="logo-group">
-        <span class="logo-icon">♟️</span>
-        <span class="logo-text gradient-text">IdeaSpace Chess Academy</span>
-      </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Overview</a></li>
-          <li><a href="manual.html" class="active">Operating Manual</a></li>
-          <li><a href="../index.html">Main Website</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Manual Layout with Sidebar -->
-  <div class="manual-layout">
-    <aside class="manual-sidebar">
-      <ul class="sidebar-nav">
-        <li><a href="#section-lore" class="active">1. Lore & Identity</a></li>
-        <li><a href="#section-analytics">2. Dashboard Analytics</a></li>
-        <li><a href="#section-scotoma">3. Scotoma Diagnostics</a></li>
-        <li><a href="#section-personas">4. The 20 AI Personas</a></li>
-        <li><a href="#section-academy">5. Adaptive AI Engine</a></li>
-        <li><a href="#section-cinematics">6. Cinematic System</a></li>
-        <li><a href="#section-techstack">7. Technical Architecture</a></li>
-      </ul>
-    </aside>
-
-    <main class="manual-content">
-      <!-- 1. Lore & Identity -->
-      <section id="section-lore" class="manual-section">
-        <h2>1. Lore & Academy Identity</h2>
-        <p>
-          The Chess Academy is not merely a training lobby—it is humanity's intellectual fortress against machine dominance. Behind every puzzle and training match lies a grander battle between organic intuition and raw computing logic.
-        </p>
-
-        <h3>Character Dossier: GM Chanakya</h3>
-        <p>
-          GM Chanakya acts as the Supreme Chess Mentor of the Academy. Once the world's most brilliant human strategist, he trained the prodigy who would eventually challenge human relevance under the name <strong>GM Kingslayer</strong>.
-        </p>
-        <p>
-          While Kingslayer surrendered to algorithmic perfection, Chanakya seeks a balance. He secretly utilizes native engines to defend humanity, but holds onto the belief that emotional depth, creative sacrifice, and intuitive calculations are what truly separate humans from machines.
-        </p>
-
-        <h3>Speech Profiling & Methodology</h3>
-        <p>
-          Chanakya addresses the player as <strong>"Apprentice"</strong> or <strong>"Student of the Academy"</strong>. His feedback is characterized by tactical conciseness, avoiding dry engine notations like <em>"Best move is Nf3"</em>. Instead, he highlights the underlying positional philosophy:
-        </p>
-        <div class="highlight-box">
-          <p><em>"Nf3, Apprentice. It develops your knight, secures central files, and anchors your king safety. Don't waste tempo—efficiency wins wars."</em></p>
-        </div>
-      </section>
-
-      <!-- 2. Dashboard Analytics -->
-      <section id="section-analytics" class="manual-section">
-        <h2>2. Dashboard Analytics & Math</h2>
-        <p>
-          The Academy home dashboard tracks player statistics and parses matches to extract advanced diagnostic indices.
-        </p>
-
-        <h3>1. ELO Rating System</h3>
-        <p>
-          Calculates relative skill levels based on match probability. During the first 10 games (Calibration Phase), $K = 40$. Once stable gameplay is established, $K = 20$.
-        </p>
-        <div class="formula-block">
-          $$\text{Expected Score } (S_e) = \frac{1}{1 + 10^{\frac{R_{\text{opp}} - R_{\text{user}}}{400}}}$$
-          $$\text{New Rating } (R_{\text{new}}) = R_{\text{old}} + K \times (S_{\text{actual}} - S_e) + S_{\text{bonus}}$$
-        </div>
-        <p>
-          <em>Note: Ratings have a hard floor of $400$. Win streaks of 3 or more games award a bonus factor $S_{\text{bonus}} = +5$.</em>
-        </p>
-
-        <h3>2. Material Dominance Index</h3>
-        <p>
-          Quantifies material margins at completion, weighting active units (Pawn = 1.0, Knight/Bishop = 3.0, Rook = 5.0, Queen = 9.0; Kings are excluded).
-        </p>
-        <div class="formula-block">
-          $$\text{Material Margin } (M) = \sum \text{User Pieces} - \sum \text{Opponent Pieces}$$
-          $$\text{Average Dominance } (\text{DOM}_{\text{avg}}) = \frac{(\text{DOM}_{\text{prev}} \times N) + M}{N + 1}$$
-        </div>
-
-        <h3>3. Opening Repertoire Depth Index (RDI)</h3>
-        <p>
-          Utilizes Shannon Entropy to evaluate opening line diversity and prevent tactical repetitiveness.
-        </p>
-        <div class="formula-block">
-          $$\text{RDI} = \frac{H_{\text{op}}}{\ln(\text{Catalog Size})} \times 100\%$$
-          $$\text{where } H_{\text{op}} = -\sum_{i} P_i \ln(P_i)$$
-        </div>
-
-        <h3>4. Endgame Conversion Index (EPI)</h3>
-        <p>
-          Calculates player efficiency when non-pawn board points are $\le 12$.
-        </p>
-        <div class="formula-block">
-          $$\text{EPI} = \frac{\sum (S_k \times C_k)}{\sum C_k} \times 100\%$$
-        </div>
-        <p>
-          Complexity Coefficients ($C_k$): $2.0$ for converting advantages, $1.5$ for defending disadvantages, and $1.0$ for equal endgame setups.
-        </p>
-
-        <!-- Placeholder for Dashboard/Analytics -->
-        <div class="media-placeholder" id="dashboard-analytics-screenshot">
-          <div class="placeholder-icon">📊</div>
-          <div class="placeholder-text">
-            <div class="placeholder-title">Dashboard Radar Chart & ELO Progression Mockup</div>
-            <div class="placeholder-desc">Recommended: Crop showing ELO chart, RDI gauge, and polar metric mapping</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. Scotoma Diagnostics -->
-      <section id="section-scotoma" class="manual-section">
-        <h2>3. Scotoma Diagnostic Engine</h2>
-        <p>
-          The core diagnostic mechanism of the Chess Academy is the Scotoma Diagnostic Engine. Compiled in high-speed native Rust, it monitors player moves and identifies positional blind spots (scotomas) across 8 visual-spatial channels:
-        </p>
-
-        <h3>1. Diagonal Retreat (DGB)</h3>
-        <p>Detects vulnerability to long diagonal bishop or queen retreats targeting the user's units.</p>
-        <div class="formula-block">
-          $$\text{Condition: } |x_2 - x_1| = |y_2 - y_1| \ge 3 \quad \land \quad y_2 < y_1 \text{ (White) or } y_2 > y_1 \text{ (Black)}$$
-        </div>
-
-        <h3>2. Horizontal Swing (HRZ)</h3>
-        <p>Tracks missed horizontal sweeping threat actions by rooks or queens across ranks.</p>
-        <div class="formula-block">
-          $$\text{Condition: } y_1 = y_2 \quad \land \quad |x_2 - x_1| \ge 3$$
-        </div>
-
-        <h3>3. Knight Flank (KNF)</h3>
-        <p>Monitors missed knight hooks originating from or targeting board edges (files A or H).</p>
-        <div class="formula-block">
-          $$\text{Condition: } x_1 \in \{0, 7\} \quad \lor \quad x_2 \in \{0, 7\}$$
-        </div>
-
-        <h3>4. Time Panic (TMP)</h3>
-        <p>Flags tactical mistakes occurring when remaining clock time drops below 45 seconds.</p>
-        <div class="formula-block">
-          $$\text{Condition: } T_{\text{rem}} < 45\text{s}$$
-        </div>
-
-        <h3>5. Material Greed (GRD)</h3>
-        <p>Monitors capture blunders that result in a drastic Stockfish evaluation drop.</p>
-        <div class="formula-block">
-          $$\text{Condition: } \Delta\text{Eval}_{\text{Stockfish}} \le -1.8$$
-        </div>
-
-        <h3>6. Tunnel Vision (TNL)</h3>
-        <p>Flags errors occurring on the opposite side of active board interactions.</p>
-        <div class="formula-block">
-          $$\text{Condition: } |x_{\text{threat}} - \text{mean}(x_{\text{recent}})| \ge 4$$
-        </div>
-
-        <h3>7. Pinned Pieces (PIN)</h3>
-        <p>Monitors mistakes resulting from illegal moves under pins or failure to identify absolute pins.</p>
-
-        <h3>8. King Safety (KSB)</h3>
-        <p>Identifies failure to defend structural squares around the king, leading to mate threats.</p>
-
-        <h3>Adaptive Assignment Dispatching</h3>
-        <p>
-          If any vector coordinate $V$ peaks above the <strong>$0.35$ diagnostic threshold</strong>, the system overrides default puzzles and serves tailored assignment tasks focused on repairing the user's specific blind spot.
-        </p>
-
-        <!-- Placeholder for Scotoma Graph -->
-        <div class="media-placeholder" id="scotoma-diagnostic-screenshot">
-          <div class="placeholder-icon">👁️</div>
-          <div class="placeholder-text">
-            <div class="placeholder-title">Scotoma Diagnostic Graph Mockup</div>
-            <div class="placeholder-desc">Recommended: View of the 8-axis radar chart showing diagnosed scotomas</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. The 20 AI Personas -->
-      <section id="section-personas" class="manual-section">
-        <h2>4. The 20 AI Personas & Arena Specs</h2>
-        <p>
-          The Arena is populated by 20 calibrated chess avatars. Each avatar is designed with a specific FIDE ELO range, depth constraint, contempt setting, and unique Rust heuristic playstyle.
-        </p>
-
-        <!-- Interactive Persona Area -->
-        <div class="personas-interactive">
-          <div class="persona-filters">
-            <button class="filter-btn active" data-filter="all">All Levels</button>
-            <button class="filter-btn" data-filter="beginner">Beginner (<1000)</button>
-            <button class="filter-btn" data-filter="intermediate">Intermediate (1000-1800)</button>
-            <button class="filter-btn" data-filter="advanced">Advanced (1800-2600)</button>
-            <button class="filter-btn" data-filter="apex">Apex Master (2600+)</button>
-          </div>
-
-          <div class="personas-grid" id="personas-container">
-            <!-- Dynamic list generated by script -->
-          </div>
-        </div>
-
-        <!-- Placeholder for Persona selection UI -->
-        <div class="media-placeholder" id="persona-selection-screenshot" style="margin-top: 40px;">
-          <div class="placeholder-icon">🤖</div>
-          <div class="placeholder-text">
-            <div class="placeholder-title">Arena Persona UI Carousel</div>
-            <div class="placeholder-desc">Recommended: Crop of the Arena page showcasing bot cards and parameters</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. Adaptive AI Engine -->
-      <section id="section-academy" class="manual-section">
-        <h2>5. Adaptive Heuristic AI Engine</h2>
-        <p>
-          In the Academy Mode, GM Chanakya does not play the optimal engine line. Instead, his move selection is adjusted by a heuristic weighting function to challenge and guide the Apprentice:
-        </p>
-        <div class="formula-block">
-          $$\text{Heuristic Score(Move)} = \text{Eval}_{\text{Stockfish}} + J_{\text{decay}} + \sum B_{\text{scotoma}} + \sum S_{\text{playstyle}}$$
-          $$\text{Selected Move} = \text{argmax}\left(\text{Heuristic Score}(M)\right)$$
-        </div>
-
-        <h3>Opening Jitter & Decay ($J_{\text{decay}}$)</h3>
-        <p>
-          Introduces human-like variety in openings, decaying linearly to zero by ply 24 to guarantee competitive endgame behavior.
-        </p>
-        <div class="formula-block">
-          $$\text{Scale} = \begin{cases} \frac{24 - \text{plies}}{24} & \text{if plies } < 24 \text{ and } \text{Tight Fight is False} \\ 0.0 & \text{otherwise} \end{cases}$$
-        </div>
-        <p>
-          <em>Tight Fight: Actively overrides jitter when Stockfish evaluates $|\text{Eval}| \le 1.5$ centipawns after ply 20, keeping the AI focused.</em>
-        </p>
-
-        <h3>Scotoma Setup Bonuses ($B_{\text{scotoma}}$)</h3>
-        <p>
-          Chanakya actively plays moves that lead to board positions matching the Apprentice's diagnosed scotomas, reinforcing learning through failure:
-        </p>
-        <ul style="list-style: none; margin-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-secondary);">
-          <li>🔥 Diagonal Retreat (DGB) Setup: $+2.50$</li>
-          <li>🔥 Horizontal Sweeping (HRZ) Setup: $+2.00$</li>
-          <li>🔥 Knight Fork (KNF) Setup: $+3.00$</li>
-          <li>🔥 Pin Setup (PIN): $+2.00$</li>
-        </ul>
-      </section>
-
-      <!-- 6. Cinematic System -->
-      <section id="section-cinematics" class="manual-section">
-        <h2>6. Cinematic Board Animations</h2>
-        <p>
-          To reinforce spatial awareness and enhance UI feedback, Chess Academy coordinates a custom cinematic layer:
-        </p>
-        <div class="highlight-box">
-          <p><strong>Camera Drift:</strong> The camera shifts $4\text{px}$ in the direction of the moved unit, amplifying spatial momentum.</p>
-          <p><strong>Camera Zoom:</strong> Scales the board to $1.02\times$ on standard captures, $1.05\times$ on checks, and $1.08\times$ on checkmate.</p>
-          <p><strong>Checkmate Saturation:</strong> Board tiles dynamically fade to grayscale over a $600\text{ms}$ duration upon checkmate.</p>
-        </div>
-
-        <h3>Piece Move Profiles</h3>
-        <p>Each chess unit features custom easing and movement speeds:</p>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; margin-left: 20px; color: var(--text-secondary);">
-          <li>♟️ <strong>Pawns:</strong> Fast, linear slide (duration: $150\text{ms}$).</li>
-          <li>♞ <strong>Knights:</strong> Parabolic vertical arc with $15^\circ$ rotation tilts (duration: $250\text{ms}$).</li>
-          <li>♝ <strong>Bishops:</strong> Gliding diagonal trail sweeps (duration: $220\text{ms}$).</li>
-          <li>♜ <strong>Rooks:</strong> Flat, heavy slide with land settle bounces (duration: $280\text{ms}$).</li>
-          <li>♛ <strong>Queens:</strong> Floating ease curves (duration: $240\text{ms}$).</li>
-          <li>♚ <strong>Kings:</strong> Deliberate steps (duration: $300\text{ms}$).</li>
-        </ul>
-      </section>
-
-      <!-- 7. Technical Architecture -->
-      <section id="section-techstack" class="manual-section">
-        <h2>7. Technical Architecture</h2>
-        <p>
-          IdeaSpace Chess Academy runs on a high-performance three-layer design:
-        </p>
-        <div class="highlight-box" style="font-family: var(--font-code); font-size: 0.9rem;">
-          [Flutter UI / Riverpod State]<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- (STDIN/STDOUT Pipes) --> [Stockfish C++ native binaries]<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- (Rust FFI / flutter_rust_bridge) --> [Rust core / Shakmaty]<br>
-        </div>
-        <p>
-          The Flutter layer handles state and gestures, Stockfish processes calculations, and the Rust core handles move validation and scotoma evaluation.
-        </p>
-      </section>
-    </main>
-  </div>
-
-  <!-- Persona Modal (Dynamic) -->
-  <div class="persona-modal" id="personaModal">
-    <div class="glass-panel modal-content">
-      <span class="close-modal" id="closeModal">&times;</span>
-      <div id="modalBody">
-        <!-- Injected dynamically -->
-      </div>
-    </div>
-  </div>
-
-  <footer style="border-top: 1px solid var(--panel-border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-    <div class="container">
-      <p>&copy; 2026 IdeaSpace. Chess Academy and all materials are properties of IdeaSpace.</p>
-    </div>
-  </footer>
-
-  <script src="assets/js/app.js"></script>
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
