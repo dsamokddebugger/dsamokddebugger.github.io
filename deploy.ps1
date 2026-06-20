@@ -25,7 +25,6 @@ Write-Host "Creating routing wrapper files..." -ForegroundColor Cyan
 Copy-Item -Path "src/build/web/index.html" -Destination "nu.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "flux.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "amber.html" -Force
-Copy-Item -Path "src/build/web/index.html" -Destination "omni.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "chess-academy.html" -Force
 
 Write-Host "Cleaning up old CSS files..." -ForegroundColor Cyan

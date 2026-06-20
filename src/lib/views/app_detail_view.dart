@@ -361,43 +361,117 @@ class _AppDetailViewState extends State<AppDetailView> {
           ),
         ),
         const SizedBox(height: 32),
-        SizedBox(
-          height: 320,
-          child: ListView.builder(
-            controller: _screenshotController,
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemCount: widget.app.screenshots.length,
-            itemBuilder: (context, index) {
-              final imgPath = widget.app.screenshots[index];
-              return Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Container(
-                  width: 160,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.3),
-                        blurRadius: 15,
-                        offset: const Offset(0, 5),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            SizedBox(
+              height: 320,
+              child: ListView.builder(
+                controller: _screenshotController,
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: widget.app.screenshots.length,
+                itemBuilder: (context, index) {
+                  final imgPath = widget.app.screenshots[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 16.0),
+                    child: Container(
+                      width: 180,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.3),
+                            blurRadius: 15,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      imgPath,
-                      fit: BoxFit.cover,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          imgPath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
+                  );
+                },
+              ),
+            ),
+            // Floating arrows for easy scrolling on desktop
+            if (!isMobile) ...[
+              Positioned(
+                left: 8,
+                child: _buildScrollChevron(
+                  icon: Icons.chevron_left_rounded,
+                  onPressed: () {
+                    if (_screenshotController.hasClients) {
+                      final target = (_screenshotController.offset - 360)
+                          .clamp(0.0, _screenshotController.position.maxScrollExtent);
+                      _screenshotController.animateTo(
+                        target,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
                 ),
-              );
-            },
-          ),
+              ),
+              Positioned(
+                right: 8,
+                child: _buildScrollChevron(
+                  icon: Icons.chevron_right_rounded,
+                  onPressed: () {
+                    if (_screenshotController.hasClients) {
+                      final target = (_screenshotController.offset + 360)
+                          .clamp(0.0, _screenshotController.position.maxScrollExtent);
+                      _screenshotController.animateTo(
+                        target,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                ),
+              ),
+            ],
+          ],
         ),
       ],
+    );
+  }
+
+  Widget _buildScrollChevron({required IconData icon, required VoidCallback onPressed}) {
+    return Container(
+      width: 44,
+      height: 44,
+      decoration: BoxDecoration(
+        color: const Color(0xff1e1e1e).withValues(alpha: 0.8),
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.4),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(22),
+          onTap: onPressed,
+          hoverColor: Colors.white.withValues(alpha: 0.08),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 28,
+          ),
+        ),
+      ),
     );
   }
 

@@ -33,12 +33,12 @@ final List<AppModel> appsList = [
       ),
     ],
     screenshots: [
-      'assets/nu/sc0.jpeg',
-      'assets/nu/sc1.jpeg',
-      'assets/nu/sc2.jpeg',
-      'assets/nu/sc3.jpeg',
-      'assets/nu/sc4.jpeg',
-      'assets/nu/sc5.jpeg',
+      'assets/nu/sc0.png',
+      'assets/nu/sc1.png',
+      'assets/nu/sc2.png',
+      'assets/nu/sc3.png',
+      'assets/nu/sc4.png',
+      'assets/nu/sc5.png',
     ],
     themePills: [
       ThemePillItem(label: 'Aegis: Futuristic Neon', color: Color(0xff00e5ff)),
@@ -109,11 +109,12 @@ final List<AppModel> appsList = [
       ),
     ],
     screenshots: [
-      'assets/flux/sc01.jpeg',
-      'assets/flux/sc1.jpeg',
-      'assets/flux/sc2.jpeg',
-      'assets/flux/sc7.jpeg',
-      'assets/flux/sc9.jpeg',
+      'assets/flux/sc0.png',
+      'assets/flux/sc1.png',
+      'assets/flux/sc2.png',
+      'assets/flux/sc3.png',
+      'assets/flux/sc4.png',
+      'assets/flux/sc5.png',
     ],
     glossary: [
       GlossaryItem(
@@ -193,6 +194,7 @@ final List<AppModel> appsList = [
     isComingSoon: false,
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.dsamok.ambersudoku',
     privacyUrl: 'amber-privacy.html',
+    heroImage: 'assets/amber/feature_graphic.png',
     problemTitle: 'Why settle for cluttered puzzles?',
     problemContent: 'AMBER Sudoku is designed to bring you the purest Sudoku experience without distractions. Featuring beautiful typography, local stats tracking, and a distraction-free interface, it\'s the perfect companion for your daily brain exercise.',
     features: [
@@ -213,21 +215,22 @@ final List<AppModel> appsList = [
         description: 'Customize your puzzle board with different themes and sound settings to fit your preferences.',
       ),
     ],
+    screenshots: [
+      'assets/amber/sc0.png',
+      'assets/amber/sc1.png',
+      'assets/amber/sc2.png',
+      'assets/amber/sc3.png',
+      'assets/amber/sc4.png',
+      'assets/amber/sc5.png',
+      'assets/amber/sc6.png',
+      'assets/amber/sc7.png',
+    ],
     accentColor: Color(0xffffb300),
     accentGradient: LinearGradient(
       colors: [Color(0xffffb300), Color(0xffff8f00)],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),
-  ),
-  const AppModel(
-    id: 'omni',
-    name: 'Omni',
-    tagline: 'Universal Utility Reimagined',
-    placeholderChar: 'O',
-    placeholderColor: Color(0xff8e24aa),
-    isComingSoon: true,
-    privacyUrl: 'omni-privacy.html',
   ),
   const AppModel(
     id: 'chess-academy',
@@ -241,6 +244,7 @@ final List<AppModel> appsList = [
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.dsamok.ideaspacechess',
     privacyUrl: 'chess-academy-privacy.html',
     deletionUrl: 'chess-academy-deletion.html',
+    heroImage: 'assets/chess-academy/feature_graphic.png',
     problemTitle: 'Master Chess with Analytics',
     problemContent: 'IdeaSpace Chess Academy provides a secure, synchronized, and engaging chess-learning experience. Improve your tactical vision, track your cognitive progress on a dynamic dashboard, and test your skills against the powerful Stockfish engine.',
     features: [
@@ -260,6 +264,12 @@ final List<AppModel> appsList = [
         title: 'Progress Tracking',
         description: 'Track your ELO rating, puzzle completion rates, daily assignment progress, and match history.',
       ),
+    ],
+    screenshots: [
+      'assets/chess-academy/sc0.png',
+      'assets/chess-academy/sc1.png',
+      'assets/chess-academy/sc2.png',
+      'assets/chess-academy/sc3.png',
     ],
     accentColor: Color(0xff90caf9),
     accentGradient: LinearGradient(
