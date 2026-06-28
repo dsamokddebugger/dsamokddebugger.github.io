@@ -111,6 +111,12 @@ class _AppDetailViewState extends State<AppDetailView> {
                             const SizedBox(height: 64),
                           ],
 
+                          // How It Works Section
+                          if (widget.app.howItWorks != null) ...[
+                            _buildHowItWorksSection(isMobile),
+                            const SizedBox(height: 64),
+                          ],
+
                           // Theme Showcase (for Nu)
                           if (widget.app.themePills.isNotEmpty) ...[
                             _buildThemeShowcaseSection(isMobile),
@@ -652,6 +658,51 @@ class _AppDetailViewState extends State<AppDetailView> {
                 },
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHowItWorksSection(bool isMobile) {
+    return Container(
+      padding: EdgeInsets.all(isMobile ? 24 : 48),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.85),
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.03),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ShaderMask(
+            shaderCallback: (bounds) => widget.app.accentGradient.createShader(
+              Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+            ),
+            child: Text(
+              '🔍 How It Works',
+              style: GoogleFonts.outfit(
+                fontSize: isMobile ? 24 : 30,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            widget.app.howItWorks ?? '',
+            style: GoogleFonts.outfit(
+              fontSize: 15,
+              color: const Color(0xff475569),
+              height: 1.6,
+            ),
           ),
         ],
       ),

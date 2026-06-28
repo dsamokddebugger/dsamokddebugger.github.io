@@ -269,18 +269,7 @@ final List<AppModel> appsList = [
       'assets/chess-academy/sc2.png',
       'assets/chess-academy/sc3.png',
     ],
-    subPageLinks: [
-      SubPageLink(
-        title: 'Interactive Showcase',
-        url: 'chess-academy/index.html',
-        icon: Icons.auto_awesome_rounded,
-      ),
-      SubPageLink(
-        title: 'Operating Manual',
-        url: 'chess-academy/manual.html',
-        icon: Icons.menu_book_rounded,
-      ),
-    ],
+    howItWorks: 'Chess Academy helps you improve your chess skills through interactive training and real-time guidance. As you play against calibrated virtual chess opponents of varying skill levels or solve tactical puzzles, the app monitors your games to identify your positional blind spots (areas on the board or specific tactical patterns you tend to miss). It then provides personalized feedback and visualizes your progress on a dynamic analytics dashboard, allowing you to easily track your growth and rating over time. All of your achievements and settings are securely saved and synced across your devices.',
     accentColor: Color(0xff90caf9),
     accentGradient: LinearGradient(
       colors: [Color(0xff90caf9), Color(0xff42a5f5)],

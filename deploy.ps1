@@ -10,7 +10,6 @@ Write-Host "Copying build output to the repository root..." -ForegroundColor Cya
 Copy-Item -Path "src/build/web/assets" -Destination "." -Recurse -Force
 Copy-Item -Path "src/build/web/canvaskit" -Destination "." -Recurse -Force
 Copy-Item -Path "src/build/web/icons" -Destination "." -Recurse -Force
-Copy-Item -Path "src/build/web/chess-academy" -Destination "." -Recurse -Force
 Copy-Item -Path "src/build/web/favicon.png" -Destination "." -Force
 Copy-Item -Path "src/build/web/flutter.js" -Destination "." -Force
 Copy-Item -Path "src/build/web/flutter_bootstrap.js" -Destination "." -Force
@@ -28,8 +27,6 @@ Copy-Item -Path "src/build/web/index.html" -Destination "flux.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "amber.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "chess-academy.html" -Force
 Copy-Item -Path "src/build/web/index.html" -Destination "privacy.html" -Force
-Copy-Item -Path "src/build/web/index.html" -Destination "chess-academy/index.html" -Force
-Copy-Item -Path "src/build/web/index.html" -Destination "chess-academy/manual.html" -Force
 
 Write-Host "Cleaning up old CSS files..." -ForegroundColor Cyan
 

@@ -57,6 +57,7 @@ class AppModel {
   final String? problemTitle;
   final String? problemContent;
   final String? problemContent2;
+  final String? howItWorks;
  
   final List<FeatureItem> features;
   final List<String> screenshots;
@@ -84,6 +85,7 @@ class AppModel {
     this.problemTitle,
     this.problemContent,
     this.problemContent2,
+    this.howItWorks,
     this.features = const [],
     this.screenshots = const [],
     this.themePills = const [],

@@ -7,8 +7,6 @@ import 'models/apps_data.dart';
 import 'views/home_view.dart';
 import 'views/app_detail_view.dart';
 import 'views/privacy_view.dart';
-import 'views/chess_academy_overview_view.dart';
-import 'views/chess_academy_manual_view.dart';
 
 void main() {
   // Use path URL strategy (removes the '#' from the URL path)
@@ -65,24 +63,7 @@ class MyApp extends StatelessWidget {
           );
         }
 
-        // Match Chess Academy specific routes
-        if (path == '/chess-academy/index.html' || path == '/chess-academy') {
-          return MaterialPageRoute(
-            settings: settings,
-            builder: (context) => ChessAcademyOverviewView(
-              onNavigate: (route) => _handleNavigation(context, route),
-            ),
-          );
-        }
 
-        if (path == '/chess-academy/manual.html' || path == '/chess-academy/manual') {
-          return MaterialPageRoute(
-            settings: settings,
-            builder: (context) => ChessAcademyManualView(
-              onNavigate: (route) => _handleNavigation(context, route),
-            ),
-          );
-        }
 
         // Match app detail pages (e.g. /nu.html, /flux.html)
         final appId = _extractAppId(path);
